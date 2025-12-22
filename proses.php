@@ -1,58 +1,69 @@
 <?php
 require 'koneksi.php';
 
-// INSERT
-if (isset($_POST['submit'])) {
-    $nim = $_POST['nim'];
-    $nama_mhs = $_POST['nama_mhs'];
-    $tgl_lahir = $_POST['tgl_lahir'];
-    $alamat = $_POST['alamat'];
+//INSERT 
+if (isset($_POST['simpan'])) {
 
-    $query = "INSERT INTO mahasiswa(nim, nama_mhs, tgl_lahir, alamat)
-              VALUES('$nim','$nama_mhs','$tgl_lahir','$alamat')";
-    $sql = $koneksi->query($query);
+    $nim        = $_POST['nim'];
+    $nama       = $_POST['nama_mhs'];
+    $tgl        = $_POST['tgl_lahir'];
+    $alamat     = $_POST['alamat'];
+    $prodi_id   = $_POST['prodi_id'];
 
-    if ($sql) {
+    $query = "
+        INSERT INTO mahasiswa
+        (nim, nama_mhs, tgl_lahir, alamat, prodi_id)
+        VALUES
+        ('$nim','$nama','$tgl','$alamat','$prodi_id')
+    ";
+
+    if ($koneksi->query($query)) {
         header("Location:index.php?page=datamahasiswa");
         exit;
     } else {
-        echo "Maaf, data gagal disimpan!";
+        echo "Gagal menyimpan data!";
     }
 }
 
-// DELETE
+
+// UPDATE MAHASISWA
+
+if (isset($_POST['ubah'])) {
+
+    $nim_lama   = $_POST['nim_lama'];
+    $nim        = $_POST['nim'];
+    $nama       = $_POST['nama_mhs'];
+    $tgl        = $_POST['tgl_lahir'];
+    $alamat     = $_POST['alamat'];
+    $prodi_id   = $_POST['prodi_id'];
+
+    $query = "
+        UPDATE mahasiswa SET
+        nim='$nim',
+        nama_mhs='$nama',
+        tgl_lahir='$tgl',
+        alamat='$alamat',
+        prodi_id='$prodi_id'
+        WHERE nim='$nim_lama'
+    ";
+
+    if ($koneksi->query($query)) {
+        header("Location:index.php?page=datamahasiswa");
+        exit;
+    } else {
+        echo "Gagal mengubah data";
+    }
+}
+
+//DELETE MAHASISWA
 if (isset($_GET['nim'])) {
+
     $nim = $_GET['nim'];
 
     $query = "DELETE FROM mahasiswa WHERE nim='$nim'";
-    $sql = $koneksi->query($query);
+    $koneksi->query($query);
 
-    if ($sql) {
-        header("Location:index.php?page=datamahasiswa");
-        exit;
-    } else {
-        echo "Maaf, data gagal dihapus!";
-    }
-}
-
-// UPDATE
-if (isset($_POST['ubah'])) {
-    $nim_lama = $_POST['nim_lama']; // ← NIM asli sebelum diedit
-    $nim = $_POST['nim'];
-    $nama_mhs = $_POST['nama_mhs'];
-    $tgl_lahir = $_POST['tgl_lahir'];
-    $alamat = $_POST['alamat'];
-
-    $query = "UPDATE mahasiswa 
-              SET nim='$nim', nama_mhs='$nama_mhs', tgl_lahir='$tgl_lahir', alamat='$alamat'
-              WHERE nim='$nim_lama'";
-    $sql = $koneksi->query($query);
-
-    if ($sql) {
-        header("Location:index.php?page=datamahasiswa");
-        exit;
-    } else {
-        echo "Maaf, data gagal diubah!";
-    }
+    header("Location:index.php?page=datamahasiswa");
+    exit;
 }
 ?>
