@@ -1,6 +1,6 @@
 <h2>List Data Mahasiswa</h2>
 <a href ='index.php?page=create' class= 'btn btn-primary'>Input Data Mahasiswa</a>
-        <table class="table">
+        <table class="table table-bordered">
   <thead>
     <tr>
       <th scope="col">No</th>
