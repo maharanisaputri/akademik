@@ -1,9 +1,7 @@
 <?php
 require 'koneksi.php';
 
-/* ======================
-   AMBIL DATA PRODI
-====================== */
+//AMBIL DATA PRODI
 $prodi = $koneksi->query("SELECT * FROM prodi");
 ?>
 
