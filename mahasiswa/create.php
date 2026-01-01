@@ -43,7 +43,6 @@ $prodi = $koneksi->query("SELECT * FROM prodi");
         <textarea name="alamat" class="form-control"></textarea>
     </div>
 
-    <button type="submit" name="simpan" class="btn btn-primary">
-        Simpan
-    </button>
+    <button type="submit" name="simpan_mahasiswa" class="btn btn-primary">Simpan</button>
+
 </form>

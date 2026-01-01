@@ -21,7 +21,7 @@ $prodi = $koneksi->query("SELECT * FROM prodi");
 
 <h1>Edit Data Mahasiswa</h1>
 
-<form action="proses.php" method="post">
+<form action="index.php?page=proses" method="post">
 
     <input type="hidden" name="nim_lama" value="<?= $data['nim'] ?>">
 
@@ -60,9 +60,8 @@ $prodi = $koneksi->query("SELECT * FROM prodi");
         <textarea name="alamat" class="form-control"><?= $data['alamat'] ?></textarea>
     </div>
 
-    <button type="submit" name="ubah" class="btn btn-primary">
-        Update
-    </button>
+    <button type="submit" name="ubah_mahasiswa" class="btn btn-primary">Update</button>
+
 
 </form>
 

@@ -9,10 +9,8 @@ $tampil = $koneksi->query("
 ?>
 
 <h2>List Data Mahasiswa</h2>
-<a href="index.php?page=create" class="btn btn-primary mb-3">
-    Input Data Mahasiswa
-</a>
-
+    <a href="index.php?page=create_mahasiswa" class="btn btn-primary">Tambah Mahasiswa</a>
+    
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -41,12 +39,10 @@ $tampil = $koneksi->query("
             <td><?= $row['tgl_lahir'] ?></td>
             <td><?= $row['alamat'] ?></td>
             <td>
-                <a href="index.php?page=edit&nim=<?= $row['nim'] ?>"
-                   class="btn btn-success btn-sm">Edit</a>
-
-                <a href="index.php?page=hapus&nim=<?= $row['nim'] ?>"
-                   onclick="return confirm('Yakin hapus?')"
-                   class="btn btn-danger btn-sm">Hapus</a>
+                <a href="index.php?page=edit_mahasiswa&nim=<?= $row['nim'] ?>" class="btn btn-warning btn-sm">Edit</a>
+                <a href="index.php?page=proses&hapus_mahasiswa=<?= $row['nim'] ?>"
+                    onclick="return confirm('Yakin hapus?')"class="btn btn-danger btn-sm">Hapus
+                </a>
             </td>
         </tr>
     <?php } ?>

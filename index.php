@@ -37,6 +37,9 @@ if(!isset($_SESSION['login'])){
         <li class="nav-item">
           <a class="nav-link" href="index.php?page=prodi">Data Prodi</a>
         </li>
+        <li class="nav-item ms-3">
+          <a href="logout.php" onclick="return confirm('Yakin ingin logout?')" class="btn btn-outline">Logout</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -48,13 +51,12 @@ if(!isset($_SESSION['login'])){
       
       if($page == 'home') include 'home.php';
       if($page == 'datamahasiswa') include 'mahasiswa/list.php';
-      if($page == 'create') include 'mahasiswa/create.php';
-      if($page == 'edit') include 'mahasiswa/edit.php';
-      if($page == 'hapus') include 'mahasiswa/proses.php';
+      if($page == 'create_mahasiswa') include 'mahasiswa/create.php';
+      if($page == 'edit_mahasiswa') include 'mahasiswa/edit.php';
+      if($page == 'proses') include 'proses.php';
       if($page == 'prodi') include 'prodi/list.php';
-      if($page == 'create') include 'prodi/create.php';
-      if($page == 'edit') include 'prodi/edit.php';
-      if($page == 'hapus') include 'prodi/proses.php';
+      if($page == 'create_prodi') include 'prodi/create.php';
+      if($page == 'edit_prodi') include 'prodi/edit.php';
 
       ?>
     </div>
